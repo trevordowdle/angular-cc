@@ -1,0 +1,15 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+/* Add application styles & imports to this file! */
+body {
+  /*font-family:Roboto, Arial, sans-serif;*/
+  font-family: 'Open Sans', sans-serif;
+}
+
+.center {
+  text-align:center;
+}
+
+.mat-grid-tile .mat-figure {
+  align-items:stretch!important;
+}
