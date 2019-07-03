@@ -5,16 +5,21 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 export interface DialogData {
   team: string;
   name: string;
+  place: number;
 }
 
 @Component({
   selector: 'add-dialog',
   templateUrl: 'addDialog.html',
+  styleUrls: ['addDialog.css']
 })
 export class AddDialog {
   constructor(
     public dialogRef: MatDialogRef<AddDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+    @Inject(MAT_DIALOG_DATA) public data: DialogData
+  ) {}
+
+  errMessage: string = '';
 
   ngOnInit(){
     console.log(this.data);
@@ -22,6 +27,23 @@ export class AddDialog {
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  addClick() {
+    this.errMessage = '';
+    if(!this.data.name){
+      this.errMessage = 'Name required';
+    }
+    else if(!this.data.team){
+      this.errMessage = 'Team required';
+    }
+    else if(!this.data.place){
+      this.errMessage = 'Place required';
+    }
+    if(this.errMessage){
+      return false;
+    }
+    this.dialogRef.close(this.data);
   }
 
   updateTime(val){

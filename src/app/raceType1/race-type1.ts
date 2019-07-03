@@ -76,7 +76,7 @@ raceData:string;
     //check for grouping here
     const dialogRef = this.dialog.open(AddDialog, {
       width: '300px',
-      height: '400px',
+      height: '420px',
       data: {
         results:this.startResults
       }
