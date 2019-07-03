@@ -16,6 +16,9 @@
     <button mat-raised-button color="info" [disabled]="!raceLogic.hasGroupings" (click)="undoGroupings()">
       Undo Groupings
     </button>
+    <button mat-icon-button color="primary" (click)="showAddModal()">
+      <mat-icon>person_add</mat-icon>
+    </button>
   </div>
   <br />
   <div class="container"> 
@@ -59,16 +62,7 @@
   <h1>Because I wanted to send something to space</h1>
 </div>
 <br />
-<!-- <div *ngFor="let key of scoringKeys">
-  {{key}}:<b>{{raceInfo[key].score}}</b>
-</div> -->
 <br />
-<br />
-<div class="center">
-  <button class="button-add" mat-fab (click)="showAddModal()">
-    <mat-icon>add</mat-icon>
-  </button>
-</div>
 <br />
 <div cdkDropList (cdkDropListDropped)="dropLogic.drop(this,$event)" class="container">
   <table id="tblResult" class="mat-elevation-z8">
