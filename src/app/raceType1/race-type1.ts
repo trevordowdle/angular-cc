@@ -26,6 +26,7 @@ raceLogic:any;
 dropLogic:any;
 formatingUtil:any;
 raceData:string;
+headerInfoExpanded:boolean = true;
 
  @Input() title: string;
 
@@ -42,6 +43,11 @@ raceData:string;
     this.startResults = initialResults;
     this.buildResults(this.startResults);
   };
+
+  test(){
+    debugger;
+    this.headerInfoExpanded = false;
+  }
 
   buildResults(startResults){
     let info = this.raceLogic.buildResults(startResults);

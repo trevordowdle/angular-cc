@@ -1,5 +1,5 @@
 
-<mat-expansion-panel class="header">
+<mat-expansion-panel class="header" [(expanded)]="headerInfoExpanded">
   <mat-expansion-panel-header>
     <mat-panel-title>
       Team Results
@@ -13,7 +13,7 @@
     <button mat-raised-button color="primary" [disabled]="!resultsModified" (click)="undoChanges()">
       Undo Result Changes
     </button>
-    <button mat-raised-button color="info" [disabled]="!raceLogic.hasGroupings" (click)="undoGroupings()">
+    <button mat-raised-button color="primary" [disabled]="!raceLogic.hasGroupings" (click)="undoGroupings()">
       Undo Groupings
     </button>
     <button mat-icon-button color="primary" (click)="showAddModal()">
@@ -74,8 +74,9 @@
       </tr>
     </thead>
     <tbody>
+      <!-- matTooltip behaves a little different on mobile -->
       <tr matTooltip="Drag to simulate results" matTooltipShowDelay="1000"
-        matTooltipHideDelay="300" *ngFor="let result of results" cdkDrag>
+        matTooltipHideDelay="300" *ngFor="let result of results" cdkDrag (cdkDragStarted)="test()"> 
         <td *ngFor="let key of resultKeys">
           {{result[key]}}
           <span *ngIf="key === 'TEAM' && raceLogic.groupingData[result[key]]">
