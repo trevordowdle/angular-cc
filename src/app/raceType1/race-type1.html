@@ -5,7 +5,7 @@
       Team Results
     </mat-panel-title>
     <mat-panel-description>
-      This is a summary of the content This is a summary of the content This is a summary of the contentj
+      <span *ngIf="!headerInfoExpanded">{{buildDesc()}}</span>
     </mat-panel-description>
   </mat-expansion-panel-header>
   <div class="btn-container">

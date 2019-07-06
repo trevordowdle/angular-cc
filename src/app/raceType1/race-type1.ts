@@ -59,10 +59,58 @@ headerInfoExpanded:boolean = false;
   openModifyDialog(index): void {
 
     let entry = this.startResults[index];
-    let time = entry.TIME.split(':'),
-      minutes,
-      seconds;
+    let timeInfo = this.breakDownTime(entry.TIME);
+    //minutes
+    //seconds
+    const dialogRef = this.dialog.open(ModifyDialog, {
+      width: '300px',
+      height: '400px',
+      data: {
+        minutes:timeInfo['minutes'],
+        seconds:timeInfo['seconds'],
+        team:entry.TEAM,
+        name:entry.NAME
+      }
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      if (result){
+        if (
+          result.minutes !== timeInfo['minutes'] || result.seconds !== timeInfo['seconds']
+          || result.team !== entry.TEAM
+        ) {
+          let removedEntry = this.startResults.splice(index,1)[0];
+          removedEntry.TEAM = result.team;
+          removedEntry.TIME = result.minutes+':'+result.seconds;
+          let insIndex = this.startResults.findIndex(entry=>{
+            let entryTimeInfo = this.breakDownTime(entry.TIME);
+            if(result.minutes <= entryTimeInfo['minutes'] && result.seconds <= entryTimeInfo['seconds']){
+              return true;
+            }
+          });
+          this.startResults.splice(insIndex,0,removedEntry);
+          this.buildResults(this.startResults);
+          this.resultsModified = true;
+        }
+      }
+    });
+  }
+
+  buildDesc(){
+    let descArr = Object.keys(this.scoringKeys).map(key=>{
+      return this.scoringKeys[key] + ' ' + this.raceInfo[this.scoringKeys[key]].score;
+    });
+    let desc = descArr.join(', ');
+    if(desc.length > 99){
+      return desc.substring(0,96)+'...';
+    }
+    return desc;
+  }
+
+  breakDownTime(time): object {
+    time = time.split(':');
+    let minutes,
+      seconds;
     if(isNaN(time[0])){
       minutes = 0;
       seconds = 0;
@@ -71,37 +119,7 @@ headerInfoExpanded:boolean = false;
       minutes = time[0];
       seconds = time[1];
     }
-
-    //minutes
-    //seconds
-
-    const dialogRef = this.dialog.open(ModifyDialog, {
-      width: '300px',
-      height: '400px',
-      data: {
-        minutes:minutes,
-        seconds:seconds,
-        team:entry.TEAM,
-        name:entry.NAME
-      }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if(result){
-        debugger;
-/*         let ref = result['results'][result['place']-1];
-        if(!ref){
-          ref = result['results'][result['results'].length-1];
-        }
-        let addedEntry = JSON.parse(JSON.stringify(ref));
-        addedEntry.NAME = result.name;
-        addedEntry.TEAM = result.team;
-        this.startResults.splice(result.place-1, 0,addedEntry);
-        this.buildResults(this.startResults);
-        this.resultsModified = true; */
-      }
-    });
-
+    return {minutes,seconds};
   }
 
   openGroupDialog(team): void {
