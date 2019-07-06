@@ -64,7 +64,7 @@
 <br />
 <br />
 <br />
-<div cdkDropList (cdkDropListDropped)="dropLogic.drop(this,$event)" class="container">
+<div (click)="headerInfoExpanded = false;" cdkDropList (cdkDropListDropped)="dropLogic.drop(this,$event)" class="container">
   <table id="tblResult" class="mat-elevation-z8">
     <thead>
       <tr>
