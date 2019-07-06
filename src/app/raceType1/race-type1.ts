@@ -3,6 +3,7 @@ import { MatButtonModule, MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angu
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { GroupingDialog } from './groupingDialog/groupingDialog';
 import { AddDialog } from './addRunnerDialog/addDialog';
+import { ModifyDialog } from './modifyRunnerDialog/modifyDialog';
 import { RaceLogic } from "./script/RaceLogic";
 import { DropLogic } from "./script/DropLogic";
 import { RaceData } from "./script/RaceData";
@@ -26,7 +27,7 @@ raceLogic:any;
 dropLogic:any;
 formatingUtil:any;
 raceData:string;
-headerInfoExpanded:boolean = true;
+headerInfoExpanded:boolean = false;
 
  @Input() title: string;
 
@@ -44,8 +45,7 @@ headerInfoExpanded:boolean = true;
     this.buildResults(this.startResults);
   };
 
-  test(){
-    debugger;
+  closeHeaderInfo(){
     this.headerInfoExpanded = false;
   }
 
@@ -54,6 +54,54 @@ headerInfoExpanded:boolean = true;
     this.raceInfo = info.raceInfo;
     this.scoringKeys = info.scoringKeys;
     this.results = info.results;
+  }
+
+  openModifyDialog(index): void {
+
+    let entry = this.startResults[index];
+    let time = entry.TIME.split(':'),
+      minutes,
+      seconds;
+
+    if(isNaN(time[0])){
+      minutes = 0;
+      seconds = 0;
+    }
+    else {
+      minutes = time[0];
+      seconds = time[1];
+    }
+
+    //minutes
+    //seconds
+
+    const dialogRef = this.dialog.open(ModifyDialog, {
+      width: '300px',
+      height: '400px',
+      data: {
+        minutes:minutes,
+        seconds:seconds,
+        team:entry.TEAM,
+        name:entry.NAME
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        debugger;
+/*         let ref = result['results'][result['place']-1];
+        if(!ref){
+          ref = result['results'][result['results'].length-1];
+        }
+        let addedEntry = JSON.parse(JSON.stringify(ref));
+        addedEntry.NAME = result.name;
+        addedEntry.TEAM = result.team;
+        this.startResults.splice(result.place-1, 0,addedEntry);
+        this.buildResults(this.startResults);
+        this.resultsModified = true; */
+      }
+    });
+
   }
 
   openGroupDialog(team): void {
@@ -112,6 +160,10 @@ headerInfoExpanded:boolean = true;
     setTimeout(()=>{
       this.openAddDialog(team);
     },100);
+  }
+
+  showModifyModal(index){
+    this.openModifyDialog(index);
   }
 
   undoChanges(){

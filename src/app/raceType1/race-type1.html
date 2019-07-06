@@ -76,7 +76,9 @@
     <tbody>
       <!-- matTooltip behaves a little different on mobile -->
       <tr matTooltip="Drag to simulate results" matTooltipShowDelay="1000"
-        matTooltipHideDelay="300" *ngFor="let result of results" cdkDrag (cdkDragStarted)="test()"> 
+        matTooltipHideDelay="300" *ngFor="let result of results;let i = index" cdkDrag 
+        (cdkDragStarted)="closeHeaderInfo()" 
+        (click)="showModifyModal(i)" > 
         <td *ngFor="let key of resultKeys">
           {{result[key]}}
           <span *ngIf="key === 'TEAM' && raceLogic.groupingData[result[key]]">
