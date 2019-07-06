@@ -94,4 +94,11 @@ tr:nth-child(even){background-color: rgba(238,238,238,.3)}
   margin-right:8px;
 }
 
+.no-wrap {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;
+}
+
 
