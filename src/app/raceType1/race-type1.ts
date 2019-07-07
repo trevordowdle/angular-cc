@@ -38,8 +38,10 @@ headerInfoExpanded:boolean = false;
     this.raceLogic = new RaceLogic();
     this.dropLogic = new DropLogic();
     let raceDataInf = new RaceData();
-    this.raceData = raceDataInf.dillenger16;
-    let initialResults = raceDataInf.buildResultsType1(this.raceData);
+    this.raceData = raceDataInf.prenats18;
+    let initialResults = raceDataInf.buildResultsType2(this.raceData);
+/*     this.raceData = raceDataInf.dillenger16;
+    let initialResults = raceDataInf.buildResultsType1(this.raceData); */
     this.originalResults = JSON.parse(JSON.stringify(initialResults));
     this.startResults = initialResults;
     this.buildResults(this.startResults);
