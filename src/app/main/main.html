@@ -1,4 +1,10 @@
 <mat-toolbar color="primary">  
   <span>CC Ease</span>
 </mat-toolbar>
-<race-type1>loading</race-type1>
+<div class="content">
+  <mat-action-list *ngIf="!type">
+    <button mat-list-item (click)="setRaceId('whiteprenats18','2')"> White Prenats 2018 </button>
+    <button mat-list-item (click)="setRaceId('dillenger16','1')"> Dill Dellinger 2017 </button>
+  </mat-action-list>
+  <race-type1 *ngIf="raceId" [raceId]="raceId" [raceType]="type">loading</race-type1>
+</div>

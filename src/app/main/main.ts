@@ -7,9 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./main.css']
 })
 export class Main {
+  
+  type:string = '';
+  raceId:string = '';
 
   constructor() {}
 
   ngOnInit(){}
+
+  setRaceId(id,type){
+    this.raceId = id;
+    this.type = type;
+  }
 
 }
