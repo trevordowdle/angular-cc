@@ -4,7 +4,7 @@
   <p class="warn" *ngIf="errMessage">{{errMessage}}</p>
   <mat-form-field>
     <mat-label>Team</mat-label>
-    <input matInput [(ngModel)]="data.team" />
+    <input cdkFocusInitial matInput [(ngModel)]="data.team" />
   </mat-form-field>
   <mat-form-field>
     <mat-label>Minutes:</mat-label>
@@ -17,6 +17,6 @@
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button (click)="updateClick()" cdkFocusInitial>Update</button>
+  <button mat-button (click)="updateClick()">Update</button>
 </div> 
 
