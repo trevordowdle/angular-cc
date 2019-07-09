@@ -1,5 +1,5 @@
 export class RaceData {
-   prenats18:string = `1-*-Linkletter, Rory-*-SR-4-*-BYU-*-4:48.5-*-23:54.4-*-1
+   whiteprenats18:string = `1-*-Linkletter, Rory-*-SR-4-*-BYU-*-4:48.5-*-23:54.4-*-1
 2-*-Tooker, Aidan-*-JR-3-*-Syracuse-*-4:48.6-*-23:54.9-*-2
 3-*-Olley, Chris-*-JR-3-*-San Francisco-*-4:48.6-*-23:54.9-*-3
 4-*-Mantz, Conner-*-FR-1-*-BYU-*-4:48.8-*-23:55.5-*-4
