@@ -1,10 +1,10 @@
 <mat-toolbar color="primary">  
-  <span>CC Ease</span>
+  <span class="pointer" (click)="raceId = null">CC Ease</span>
 </mat-toolbar>
 <div class="content">
-  <mat-action-list *ngIf="!type">
-    <button mat-list-item (click)="setRaceId('whiteprenats18','2')"> White Prenats 2018 </button>
-    <button mat-list-item (click)="setRaceId('dillenger16','1')"> Dill Dellinger 2017 </button>
+  <mat-action-list *ngIf="!raceId">
+    <button mat-list-item (click)="setRaceId('whiteprenats18m','2','Wisconsin Pre Nationals Men White 2018')">Wisconsin Pre Nationals Men White 2018</button>
+    <button mat-list-item (click)="setRaceId('dillenger17m','1','Bill Dellinger Invitational Men 2017')">Bill Dellinger Invitational Men 2017</button>
   </mat-action-list>
-  <race-type1 *ngIf="raceId" [raceId]="raceId" [raceType]="type">loading</race-type1>
+  <race-type1 *ngIf="raceId" [raceId]="raceId" [raceType]="type" [title]="title">loading</race-type1>
 </div>

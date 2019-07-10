@@ -1,5 +1,5 @@
 export class RaceData {
-   whiteprenats18:string = `1-*-Linkletter, Rory-*-SR-4-*-BYU-*-4:48.5-*-23:54.4-*-1
+   whiteprenats18m:string = `1-*-Linkletter, Rory-*-SR-4-*-BYU-*-4:48.5-*-23:54.4-*-1
 2-*-Tooker, Aidan-*-JR-3-*-Syracuse-*-4:48.6-*-23:54.9-*-2
 3-*-Olley, Chris-*-JR-3-*-San Francisco-*-4:48.6-*-23:54.9-*-3
 4-*-Mantz, Conner-*-FR-1-*-BYU-*-4:48.8-*-23:55.5-*-4
@@ -233,7 +233,7 @@ export class RaceData {
 232-*-Hill III, James-*-SR-4-*-Tulane-*-5:40.2-*-28:11.2-*-232
  -*-Lomong, Alex-*-JR-3-*-Ohio State-*- -*-DNF-*- 
  -*-Flowers, Ben-*-SO-2-*-Wichita State-*- -*-DNF-*-`;
-   dillenger16:string = `1	YOUNG, Clayton	126	BYU	--	23:42.4	---
+   dillenger17m:string = `1	YOUNG, Clayton	126	BYU	--	23:42.4	---
   2	LINKLETTER, Rory	119	BYU	--	23:43.4	0:01.4
   3	MCMILLAN, Connor	121	BYU	--	23:44.0	0:02.0
   4	CLINGER, Casey	115	BYU	--	23:46.9	0:04.9
